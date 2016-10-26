@@ -1,0 +1,17 @@
+French:
+
+Bonjour
+Bonjour le monde
+Comment allez-vous
+Ravi de vous rencontrer
+Je parle français
+pouvez-vous voir que je parle français?
+
+
+Spanish:
+
+Hola
+Hola Mundo
+Como estas
+Yo hablo español
+¿Se puede ver que estoy hablando español?

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Socket.IO chat</title>
+        <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            body { font: 13px Helvetica, Arial; }
+            form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+            form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+            form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+            #messages-pane { list-style-type: none; margin: 0; padding: 0; }
+            #messages-pane li { padding: 5px 10px; }
+            #messages-pane li:nth-child(odd) { background: #eee; }
+            #system {font: italic bold 15px serif; }
+        </style>
+    </head>
+    <body>
+        <ul id="messages-pane">
+        <li id="system"> Enter your name in the text box below, then select your language to get started.</li>
+        <li id="system"> Entrez votre nom dans la zone de texte ci-dessous et choisissez votre langue préférée.</li>
+        </ul>
+        <form id="form" action="">
+            <input id="m" autocomplete="off" /><button>Send</button>
+            <select id="lan-chooser" name="lan-chooser">
+                <option value="en" selected>English</option>
+                <option value="fr">Français</option>
+				<option value="es">Spanish</option>
+            </select>
+        </form>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+        <script>
+			/*
+			Variables:
+			name_sent - A one-time flag to tell whether we have received a username
+			usrname   - Stores the user’s username
+			language  - Stores the language chosen by the user
+			*/
+
+			var socket = io();
+            var name_sent = false;
+            var usrname = "Anonym"; 
+            var language = "en";
+            var setup_user = function(){
+                // todo: logic for first-time setup of a user 
+            }
+
+
+			 // generate an element to display a message from either the user himself
+			 // or from others, these two will be displayed differently 	
+            var display_msg = function(name,msg){
+                 if (name != usrname){
+					// message from others
+                    $('#messages-pane').append($('<li>').wrapInner(name + ' : <span id="chat-message-other">' + msg + '</span>'));
+                } else {
+                    // todo: append element(s) to display a message from the user himself/herself (span id=”chat-message-self” )
+                }
+            };
+
+
+			 // todo: display_translated_msg function: calls the display_msg function 
+			 // with a translated message and remove an event listener 
+
+            $('form').submit( function(){
+				if(!name_sent){
+					setup_user();
+				} else{
+					// todo: trigger event ‘chat_message’ to send message
+				}
+				return false;
+			});
+
+
+			// client side event for whenever a name is sent
+            socket.on('name-sent', function(name){
+                // todo: add element to say that a user with username <name> has joined
+			});
+
+			// todo: client side event on ‘chat_message’ for whenever a message is sent
+			
+        </script>
+    </body>
+</html>
+
+

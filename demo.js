@@ -1,4 +1,4 @@
-//index.js -- the server of the chat implementation.
+//demo.js -- the server of the chat implementation.
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -31,7 +31,6 @@ io.on('connection', function(socket){
 
     //
     socket.on('name-sent', function(name){
-        console.log(name + " given as a name");
         //todo
     });
 

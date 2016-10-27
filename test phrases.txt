@@ -1,11 +1,11 @@
 French:
 
 Bonjour
-Bonjour le monde
-Comment allez-vous
+Bonjour le monde!
+Comment allez-vous?
 Ravi de vous rencontrer
 Je parle français
-pouvez-vous voir que je parle français?
+Pouvez-vous voir que je parle français?
 
 
 Spanish:

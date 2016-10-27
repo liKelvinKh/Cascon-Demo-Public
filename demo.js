@@ -1,4 +1,6 @@
 //demo.js -- the server of the chat implementation.
+var appmetrics = require('appmetrics');
+var monitoring = appmetrics.monitor();
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -52,6 +54,17 @@ io.on('connection', function(socket){
             }
         });
     });
+});
+
+monitoring.on('initialized',function(env){
+	env = monitoring.getEnvironment();
+	for(var entry in env){
+		console.log(entry + ':' + env[entry]);
+	};
+});
+
+monitoring.on('cpu', function(cpu){
+	console.log('['+ new Date(cpu.time) + '] CPU: ' + cpu.process);
 });
 
 http.listen(8080, function(){

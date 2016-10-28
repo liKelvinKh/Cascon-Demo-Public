@@ -42,26 +42,22 @@
             var name_sent = false;
             var usrname = "Anonym"; 
             var language = "en";
+			
+			//logic to setup a user
             var setup_user = function(){
                 // todo: logic for first-time setup of a user 
             }
 
 
-			 // generate an element to display a message from either the user himself
-			 // or from others, these two will be displayed differently 	
+			// display a message	
             var display_msg = function(name,msg){
-                 if (name != usrname){
-					// message from others
-                    $('#messages-pane').append($('<li>').wrapInner(name + ' : <span id="chat-message-other">' + msg + '</span>'));
-                } else {
-                    // todo: append element(s) to display a message from the user himself/herself (span id=”chat-message-self” )
-                }
+                 $('#messages-pane').append($('<li>').text(msg));
             };
 
+			// todo: display_translated_msg function: 
+			//		display a translated messsage and remove listener for 'translation-done'
 
-			 // todo: display_translated_msg function: calls the display_msg function 
-			 // with a translated message and remove an event listener 
-
+			// logic for send button
             $('form').submit( function(){
 				if(!name_sent){
 					setup_user();
@@ -74,7 +70,7 @@
 
 			// client side event for whenever a name is sent
             socket.on('name-sent', function(name){
-                // todo: add element to say that a user with username <name> has joined
+                // todo: call display_msg to say that a user with name <name> has joined
 			});
 
 			// todo: client side event on ‘chat_message’ for whenever a message is sent

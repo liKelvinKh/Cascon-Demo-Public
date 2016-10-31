@@ -4,12 +4,12 @@ var monitoring = appmetrics.monitor();
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var LanguageTranslatorV2 = require('watson-developer-cloud/language-translator/v2');
+/*var LanguageTranslatorV2 = require('watson-developer-cloud/language-translator/v2');
 var language_translator = new LanguageTranslatorV2({
         "url": "https://gateway.watsonplatform.net/language-translation/api",
         "password": "",
         "username": ""
-});
+});*/
 
 function jsFriendlyJSONStringify (s) {
         return JSON.stringify(s).
@@ -39,7 +39,7 @@ io.on('connection', function(socket){
 
     //todo: event listener ‘chat message’
 
-    socket.on('require-translation', function(text, src, tar, name){
+   /* socket.on('require-translation', function(text, src, tar, name){
         language_translator.translate({
         text: text, source : src, target: tar },
         function (err, translation) {
@@ -53,7 +53,7 @@ io.on('connection', function(socket){
                 //todo: trigger client side event listener ‘translation-done’
             }
         });
-    });
+    });*/
 });
 
 monitoring.on('initialized',function(env){

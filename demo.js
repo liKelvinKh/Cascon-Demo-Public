@@ -7,8 +7,8 @@ var io = require('socket.io')(http);
 var LanguageTranslatorV2 = require('watson-developer-cloud/language-translator/v2');
 var language_translator = new LanguageTranslatorV2({
         "url": "https://gateway.watsonplatform.net/language-translation/api",
-        "password": "i6BusBnBIYI0",
-        "username": "79dd6287-9f16-4774-b7f0-4817ddf38904"
+        "password": "",
+        "username": ""
 });
 
 function jsFriendlyJSONStringify (s) {
@@ -57,14 +57,14 @@ io.on('connection', function(socket){
 });
 
 monitoring.on('initialized',function(env){
-	env = monitoring.getEnvironment();
-	for(var entry in env){
-		console.log(entry + ':' + env[entry]);
-	};
+    env = monitoring.getEnvironment();
+    for(var entry in env){
+        console.log(entry + ':' + env[entry]);
+    };
 });
 
 monitoring.on('cpu', function(cpu){
-	console.log('['+ new Date(cpu.time) + '] CPU: ' + cpu.process);
+    console.log('['+ new Date(cpu.time) + '] CPU: ' + cpu.process);
 });
 
 http.listen(8080, function(){

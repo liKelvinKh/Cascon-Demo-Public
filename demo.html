@@ -24,57 +24,57 @@
             <select id="lan-chooser" name="lan-chooser">
                 <option value="en" selected>English</option>
                 <option value="fr">Français</option>
-				<!--<option value="es">Spanish</option>       for multilingual-->
+                <!--<option value="es">Spanish</option>       for multilingual-->
             </select>
         </form>
 
         <script src="/socket.io/socket.io.js"></script>
         <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
         <script>
-			/*
-			Variables:
-			name_sent - A one-time flag to tell whether we have received a username
-			usrname   - Stores the user’s username
-			language  - Stores the language chosen by the user
-			*/
+            /*
+            Variables:
+            name_sent - A one-time flag to tell whether we have received a username
+            usrname   - Stores the user’s username
+            language  - Stores the language chosen by the user
+            */
 
-			var socket = io();
+            var socket = io();
             var name_sent = false;
             var usrname = "Anonym"; 
             var language = "en";
-			
-			//logic to setup a user
+            
+            //logic to setup a user
             var setup_user = function(){
                 // todo: logic for first-time setup of a user 
             }
 
 
-			// display a message	
+            // display a message    
             var display_msg = function(name,msg){
                  $('#messages-pane').append($('<li>').text(msg));
             };
 
-			// todo: display_translated_msg function: 
-			//		display a translated messsage and remove listener for 'translation-done'
+            // todo: display_translated_msg function: 
+            //      display a translated messsage and remove listener for 'translation-done'
 
-			// logic for send button
+            // logic for send button
             $('form').submit( function(){
-				if(!name_sent){
-					setup_user();
-				} else{
-					// todo: trigger event ‘chat_message’ to send message
-				}
-				return false;
-			});
+                if(!name_sent){
+                    setup_user();
+                } else{
+                    // todo: trigger event ‘chat_message’ to send message
+                }
+                return false;
+            });
 
 
-			// client side event for whenever a name is sent
+            // client side event for whenever a name is sent
             socket.on('name-sent', function(name){
                 // todo: call display_msg to say that a user with name <name> has joined
-			});
+            });
 
-			// todo: client side event on ‘chat_message’ for whenever a message is sent
-			
+            // todo: client side event on ‘chat_message’ for whenever a message is sent
+            
         </script>
     </body>
 </html>

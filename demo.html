@@ -40,7 +40,7 @@
 
             var socket = io();
             var name_sent = false;
-            var usrname = "Anonym"; 
+            var username = "Anonym"; 
             var language = "en";
             
             //logic to setup a user
@@ -50,7 +50,7 @@
 
 
             // display a message    
-            var display_msg = function(name,msg){
+            var display_msg = function(msg){
                  $('#messages-pane').append($('<li>').text(msg));
             };
 

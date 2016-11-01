@@ -39,7 +39,7 @@ io.on('connection', function(socket){
 
     //todo: event listener ‘chat message’
 
-   /* socket.on('require-translation', function(text, src, tar, name){
+    /*socket.on('require-translation', function(text, src, tar, name){
         language_translator.translate({
         text: text, source : src, target: tar },
         function (err, translation) {
@@ -55,7 +55,7 @@ io.on('connection', function(socket){
         });
     });*/
 });
-
+/*
 monitoring.on('initialized',function(env){
     env = monitoring.getEnvironment();
     for(var entry in env){
@@ -66,7 +66,7 @@ monitoring.on('initialized',function(env){
 monitoring.on('cpu', function(cpu){
     console.log('['+ new Date(cpu.time) + '] CPU: ' + cpu.process);
 });
-
+*/
 http.listen(8080, function(){
     console.log('listening on port 8080');    
 });
